@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: next-app  # Replace with your desired deployment name
+spec:
+  replicas: 2  # Adjust the number of replicas based on your needs
+  selector:
+    matchLabels:
+      app: next-app
+  template:
+    metadata:
+      labels:
+        app: next-app
+    spec:
+      containers:
+      - name: next-app # Container name can be adjusted (optional)
+        image: xalien073/tmr:98af19018e193676955412b5d37f3d47ba50ca65
+        ports:
+        - containerPort: 3000  # Adjust the port if needed
+          protocol: TCP
+      #   volumeMounts:
+      #   - name: next-volume # Name for the volume mount
+      #     mountPath: /app/.next/server/app/cm
+      # volumes:
+      # - name: next-volume # Same name as the volume mount
+      #   configMap:
+      #     name: next-cm
+          # defaultMode: 0444  # Optional: Set permission mode for the mounted file (read-only)
+      
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: next-app
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: next-app
+#   template:
+#     metadata:
+#       labels:
+#         app: next-app
+#     spec:
+#       containers:
+#       - name: next-app
+#         image: xalien073/tmr:98af19018e193676955412b5d37f3d47ba50ca65
+#         ports:
+#         - containerPort: 3000
+#           protocol: TCP
+#         env:
+#         - name: NEXT_PUBLIC_VOLUME_PATH
+#           value: /app/cm # Adjust the path based on your volume mount

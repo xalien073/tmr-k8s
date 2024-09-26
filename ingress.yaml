@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tmr-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /  # Notice the space after path:
+        backend:
+          service:
+            name: fastapi-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /next
+        backend:
+          service:
+            name: next-service
+            port:
+              number: 80
+
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: next-ingress  # Replace with your desired Ingress name
+#   annotations:     # Annotations for Ingress controller configuration (optional)
+#     nginx.ingress.kubernetes.io/rewrite-target: /  # Optional: Re-writes requests to root path
+# spec:
+#   ingressClassName: nginx-example  # Replace with the name of your Ingress class (if applicable)
+#   rules:
+#   - http:
+#       paths:
+#       - path: /  # Path prefix for your Next.js application (can be customized)
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: next-service # Replace with the name of your Next.js service
+#             port:
+#               number: 80  # Port of the Next.js service (typically 80)
