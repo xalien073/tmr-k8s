@@ -1,0 +1,19 @@
+replicaCount: 2
+
+image:
+  repository: xalien073/tmr
+  tag: d4fbba5089cb36bbf28987e9f962b5fa007a35ea
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 3000
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
