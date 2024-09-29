@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: next-app # Container name can be adjusted (optional)
-        image: xalien073/tmr:d4fbba5089cb36bbf28987e9f962b5fa007a35ea
+        image: xalien073/tmr:1f7f2d4ac7f75d2bb7c6ddd92b76f3cb081b65bd
         ports:
         - containerPort: 3000  # Adjust the port if needed
           protocol: TCP
